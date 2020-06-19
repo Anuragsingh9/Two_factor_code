@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
 </head>
 <body>
     <div id="app">
@@ -74,7 +75,31 @@
         @yield('content')
     </div>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+
+   
 </body>
+<script src="{{ asset('js/app.js') }}"></script>
+<script
+src="https://code.jquery.com/jquery-3.5.1.min.js"
+integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+crossorigin="anonymous">
+</script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+
+{{-- This is a ajax call to the route name-get.user which will call getuser() of HomeController--}}
+
+<script>
+    $(document).ready( function () {
+    $('#myTable').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: '{!! route('get.user') !!}',
+        columns: [
+            { data: 'name', name: 'name' },
+            { data: 'email', name: 'email' }
+        ]
+    });
+    
+} );
+</script>
 </html>

@@ -15,8 +15,10 @@ Route::group(['middleware' => ['auth', 'twofactor']], function()
 {
     
     Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::get('/user', 'HomeController@getuser')->name('get.user');/**Route for yajra database table */
     
-    Route::get('/welcome','HomeController@check');
+    
     
     
     

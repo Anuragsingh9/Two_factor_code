@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\User;
 use Illuminate\Http\Request;
-
+use Yajra\Datatables\Datatables;
 class HomeController extends Controller
 {
     /**
@@ -23,9 +23,20 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // $user=User::all();
         return view('home');
     }
-    public function check(){
-        return ("ok");
+
+    /**
+     * Method for Displaying all users of User table using Yajara Database Table
+     */
+
+    public function getuser(){
+
+        return Datatables::of(User::query())->make(true);
     }
+
 }
+
+
+
